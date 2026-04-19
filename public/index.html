@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Mi Primer Frontend</title>
+</head>
+<body>
+    <h1>Bienvenido a mi aplicación</h1>
+    <p>El mensaje que verás abajo no está escrito en este HTML, viene directamente desde Python:</p>
+    
+    <h2 id="resultado" style="color: blue;">Llamando a la API...</h2>
+
+    <script>
+        // JS actúa como el cliente llamando al mesero (tu API en el puerto 8000)
+        fetch("http://127.0.0.1:8000/")
+            .then(respuesta => respuesta.json()) // Traduce la respuesta de JSON
+            .then(datos => {
+                // Busca la etiqueta <h2> y reemplaza su texto con el mensaje de Python
+                document.getElementById("resultado").innerText = datos.mensaje;
+            });
+    </script>
+</body>
+</html>
